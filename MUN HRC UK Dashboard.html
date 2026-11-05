@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MUN Dashboard · HRC · United Kingdom</title>
+<style>
+:root{--navy:#0b1b33;--navy2:#13294b;--navy3:#1d3a66;--gold:#d4a937;--goldbg:#fff3cf;--ink:#16202f;--mut:#5a6578;--line:#d9dee8;--bg:#f5f7fb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.25;color:var(--navy)}
+header{background:var(--navy);color:#fff;padding:20px 16px 0;border-bottom:3px solid var(--gold)}
+.wrap{max-width:1000px;margin:0 auto}
+header h1{color:#fff;margin:0 0 4px;font-size:1.5rem}header p{margin:0 0 14px;color:#c4cee0;font-size:.92rem}
+.top{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+#q{flex:1;min-width:200px;padding:10px 12px;border-radius:8px;border:1px solid var(--navy3);background:var(--navy2);color:#fff;font-size:1rem}
+#q::placeholder{color:#9fb0cc}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--navy2);color:#fff;border:1px solid var(--navy3);padding:9px 14px;border-radius:8px}.btn:hover{border-color:var(--gold)}
+.main{display:flex;gap:6px}
+.main button{flex:1;padding:14px 10px;font-weight:700;font-size:1.02rem;background:var(--navy2);color:#c4cee0;border:0;border-radius:10px 10px 0 0}
+.main button[aria-selected=true]{background:#fff;color:var(--navy);box-shadow:inset 0 4px 0 var(--gold)}
+.sub{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.sub .wrap{display:flex;gap:4px;overflow-x:auto;padding:8px 12px}
+.sub button{white-space:nowrap;padding:8px 14px;border:1px solid var(--line);background:#fff;border-radius:20px;color:var(--navy)}
+.sub button[aria-selected=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+main{padding:20px 16px 80px}main .wrap{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px}
+.panel{display:none}.panel.on{display:block}
+h2{margin:0 0 12px;font-size:1.45rem}h3{margin:22px 0 8px;font-size:1.1rem}
+.g{background:var(--goldbg);border-bottom:2px solid var(--gold);padding:0 3px;border-radius:2px;font-weight:600}
+.call{border-left:4px solid var(--gold);background:#f0f4fb;padding:10px 14px;border-radius:0 8px 8px 0;margin:14px 0}
+.warn{border-left:4px solid #b4423a;background:#fdf1ef;padding:10px 14px;border-radius:0 8px 8px 0;margin:14px 0}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.95rem}
+th{background:var(--navy);color:#fff;text-align:left}th,td{padding:8px 10px;border:1px solid var(--line);vertical-align:top}
+.tw{overflow-x:auto}
+.tag{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:10px;font-weight:700;white-space:nowrap}
+.ex{background:#e3f3e6;color:#1d5a2b}.pr{background:#fde8c8;color:#7a4a05}.cr{background:#fbe0dd;color:#8a2a22}
+details{border:1px solid var(--line);border-radius:8px;margin:8px 0;background:#fff}
+summary{cursor:pointer;padding:10px 14px;font-weight:600;color:var(--navy);background:#f0f4fb;border-radius:8px}
+details[open] summary{border-bottom:1px solid var(--line);border-radius:8px 8px 0 0}
+details>div{padding:6px 16px 12px}
+.ph{margin:12px 0;padding-bottom:8px;border-bottom:1px dashed var(--line)}.ph b{color:var(--navy)}
+.ph .w{color:var(--mut);font-size:.92rem}.ph ul{margin:4px 0 0}
+a{color:#1b4fa0}ul,ol{padding-left:22px}li{margin:4px 0}
+#res{display:none;margin-bottom:12px}#res.on{display:block}
+#res .r{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 12px;margin:6px 0}
+#res .r:hover{border-color:var(--gold)}#res small{color:var(--mut)}
+mark{background:var(--gold);color:#000}
+#top{position:fixed;right:16px;bottom:16px;display:none;background:var(--gold);color:var(--navy);border:0;border-radius:50%;width:46px;height:46px;font-size:1.3rem;font-weight:700;box-shadow:0 2px 8px #0005}
+footer{text-align:center;color:var(--mut);font-size:.85rem;padding:0 16px 30px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media(max-width:600px){main .wrap{padding:14px}.main button{font-size:.9rem}}
+@media print{header,.sub,#top,#res,footer{display:none!important}body{background:#fff}main{padding:0}main .wrap{border:0;padding:0}
+.panel{display:none!important}.panel.on{display:block!important}details>div{display:block}.g{background:#fff3cf!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body>
+<header><div class="wrap">
+<h1>MUN Preparation Dashboard</h1>
+<p>Human Rights Council · United Kingdom · Agenda: Implementing Human Rights Safeguards in the Proliferation of Mass Surveillance and Predictive Profiling Technologies</p>
+<div class="top"><input id="q" type="search" placeholder="Search phrases, laws, keywords…" aria-label="Search"><button class="btn" id="pr">Print this section</button><button class="btn" id="ex">Expand / collapse all</button></div>
+<div class="main" role="tablist"><button role="tab" data-g="R" aria-selected="true">Research &amp; Country Facts</button><button role="tab" data-g="M" aria-selected="false">MUN Skills &amp; Procedure</button></div>
+</div></header>
+<nav class="sub"><div class="wrap" id="subs" role="tablist"></div></nav>
+<main><div class="wrap"><div id="res"></div>
+
+<!-- ============ RESEARCH ============ -->
+<section class="panel" id="pos" data-g="R" data-n="UK Position"><h2>UK Position</h2>
+<div class="call"><b>Core position:</b> the United Kingdom can support surveillance for <span class="g">legitimate public-safety and national-security purposes</span>, but its use should be lawful, necessary, proportionate, fair and subject to safeguards.</div>
+<ul><li>Support responsible use of surveillance, not a blanket ban.</li><li>Protect privacy and personal data.</li><li>Prevent discrimination and test systems for bias.</li><li>Require meaningful human oversight of consequential decisions.</li><li>Support international cooperation and clearer standards.</li></ul>
+<p class="call"><b>Useful distinction:</b> these are sensible debate positions consistent with the UK's stated balancing approach. Do not present every bullet as a quotation from UK policy.</p>
+<h3>Main arguments to make</h3>
+<details open><summary>1. Security and rights are not opposites</summary><div>Surveillance can help prevent serious crime, but only where there is a legitimate aim and the intrusion is justified. “Security and human rights must be protected together.”</div></details>
+<details><summary>2. A prediction is not proof</summary><div>A risk score or facial-recognition match should not, by itself, establish that someone committed a crime. Important decisions need reliable evidence and meaningful human review.</div></details>
+<details><summary>3. Safeguards must keep pace with technology</summary><div>The UK openly accepts its legal framework for facial recognition is complex: the Home Office launched a <span class="g">consultation on 4 December 2025</span> on a clearer framework. Use this to show good faith.</div></details>
+<details><summary>4. Support others, don't lecture</summary><div>Offer technical assistance, shared testing methods and training so States with fewer resources can build safeguards.</div></details>
+<h3>Position by category</h3>
+<div class="tw"><table><tr><th>Category</th><th>What to say</th></tr>
+<tr><td><span class="tag ex">Existing</span> Current UK practice</td><td>Police use retrospective, live and operator-initiated facial recognition with safeguards such as immediate deletion of non-matches (see UK Facial Recognition tab).</td></tr>
+<tr><td><span class="tag pr">Proposed</span> Reform</td><td>The Government has consulted on a new legal framework and said it intends to legislate “in due course” (parliamentary answer, 13 April 2026). No new law should be described as in force.</td></tr>
+<tr><td><span class="tag cr">Criticised</span></td><td>Complex legal basis, accuracy and bias concerns, transparency and proportionality (see UK Facial Recognition tab).</td></tr></table></div>
+<p class="call"><b>Mandate:</b> the Council is not a world parliament. Frame UK proposals as recommendations, requests for OHCHR reports, technical assistance and cooperation.</p></section>
+
+<section class="panel" id="law" data-g="R" data-n="UK Laws"><h2>UK Laws &amp; Policies</h2>
+<p>Status key: <span class="tag ex">Existing law</span> <span class="tag pr">Proposed</span> <span class="tag cr">Criticised</span>. Click law names for the text on legislation.gov.uk.</p>
+<div class="tw"><table><tr><th>Law / policy</th><th>What it does</th><th>Why it matters to the agenda</th></tr>
+<tr><td><a href="https://www.legislation.gov.uk/ukpga/1998/42" target="_blank" rel="noopener"><span class="g">Human Rights Act 1998</span></a> <span class="tag ex">Existing</span></td><td>Brings rights from the European Convention on Human Rights into UK domestic law (in force <span class="g">2 October 2000</span>). Public authorities must act compatibly with them.</td><td>Article 8 (private life) is the main domestic hook for challenging surveillance.</td></tr>
+<tr><td><a href="https://www.legislation.gov.uk/ukpga/2018/12" target="_blank" rel="noopener"><span class="g">Data Protection Act 2018</span></a> <span class="tag ex">Existing</span></td><td>UK rules for processing personal data, including a separate regime for law-enforcement processing. Works alongside the UK GDPR.</td><td>Governs how police and others collect, use, keep and delete biometric and other personal data.</td></tr>
+<tr><td><a href="https://www.legislation.gov.uk/ukpga/2010/15" target="_blank" rel="noopener"><span class="g">Equality Act 2010</span></a> <span class="tag ex">Existing</span></td><td>Protection against discrimination in areas covered by the Act. Includes the Public Sector Equality Duty for public bodies.</td><td>Relevant to algorithmic bias and unequal impact on protected groups.</td></tr>
+<tr><td><a href="https://www.legislation.gov.uk/ukpga/2016/25" target="_blank" rel="noopener"><span class="g">Investigatory Powers Act 2016</span></a> <span class="tag ex">Existing</span></td><td>Framework and oversight for certain investigatory powers (e.g. interception, communications data, bulk powers), including independent judicial oversight.</td><td>Shows the UK's oversight model for state surveillance. <b>Not</b> a single law governing all facial recognition.</td></tr>
+<tr><td><a href="https://www.legislation.gov.uk/ukpga/2012/9" target="_blank" rel="noopener"><span class="g">Protection of Freedoms Act 2012</span></a> <span class="tag ex">Existing</span></td><td>Includes provisions on biometric data and the surveillance camera framework.</td><td>Basis for rules on retaining fingerprints/DNA and for the Surveillance Camera Code.</td></tr>
+<tr><td><a href="https://www.legislation.gov.uk/ukpga/1984/60" target="_blank" rel="noopener"><span class="g">Police and Criminal Evidence Act 1984</span></a> <span class="tag ex">Existing</span></td><td>Key part of the legal framework for police powers and procedures.</td><td>Part of the patchwork police rely on alongside common-law powers.</td></tr>
+<tr><td><span class="g">Bridges v South Wales Police</span> (Court of Appeal, 2020) <span class="tag cr">Case law</span></td><td>The Court of Appeal found South Wales Police's use of live facial recognition in that case breached privacy and equality-duty requirements (insufficiently clear rules and assessment).</td><td>Often cited as the reason a clearer framework is needed. Verify details before quoting.</td></tr>
+<tr><td><span class="g">Facial-recognition legal framework consultation</span> <span class="tag pr">Proposed</span></td><td>Home Office consultation, <span class="g">4 Dec 2025 – 12 Feb 2026</span> (closed). Government says it will legislate in due course.</td><td>Your best evidence the UK is acting on criticism.</td></tr></table></div>
+<div class="warn"><b>Accuracy warning:</b> never say the Investigatory Powers Act 2016 regulates all police facial recognition. The Government's own guide describes it as relying on common-law powers, several statutes, codes and police guidance.</div></section>
+
+<section class="panel" id="hr" data-g="R" data-n="Human Rights"><h2>Human Rights</h2>
+<h3>Universal Declaration of Human Rights (<span class="g">adopted 10 December 1948</span>, not legally binding)</h3>
+<div class="tw"><table><tr><th>Article</th><th>Right</th><th>Link to the agenda</th></tr>
+<tr><td><span class="g">Art. 7</span></td><td>Equality before the law and equal protection against discrimination.</td><td>Biased algorithms treating groups differently.</td></tr>
+<tr><td><span class="g">Art. 9</span></td><td>No arbitrary arrest, detention or exile.</td><td>Stops based on a computer match or risk score alone.</td></tr>
+<tr><td><span class="g">Art. 10</span></td><td>Fair and public hearing by an independent, impartial tribunal.</td><td>Right to challenge automated decisions.</td></tr>
+<tr><td><span class="g">Art. 11</span></td><td>Presumption of innocence.</td><td>Predictive profiling can treat people as suspects before any act.</td></tr>
+<tr><td><span class="g">Art. 12</span></td><td>No arbitrary interference with privacy, family, home or correspondence.</td><td>The core privacy right.</td></tr>
+<tr><td><span class="g">Art. 19</span></td><td>Freedom of opinion and expression.</td><td>Chilling effect of being constantly watched.</td></tr></table></div>
+<h3>International Covenant on Civil and Political Rights (<span class="g">adopted 1966, in force 1976</span>, legally binding on States Parties)</h3>
+<ul><li><span class="g">Article 17</span>: privacy.</li><li><span class="g">Article 19</span>: freedom of expression.</li><li><span class="g">Article 26</span>: equality before the law and equal protection without discrimination.</li><li><span class="g">Article 9</span>: liberty and security of person; protection against arbitrary arrest or detention.</li></ul>
+<div class="warn"><b>Don't mix them up:</b> privacy is Art. 12 UDHR but Art. 17 ICCPR. Equality is Art. 7 UDHR but Art. 26 ICCPR.</div>
+<p>Useful test: any restriction should be <b>lawful, necessary, proportionate and for a legitimate aim</b>.</p></section>
+
+<section class="panel" id="top1" data-g="R" data-n="Topic Explained"><h2>Topic Explained</h2>
+<details open><summary>Mass surveillance</summary><div>Monitoring large numbers of people, e.g. CCTV, phone or internet data, location information or facial recognition.</div></details>
+<details open><summary>Predictive profiling</summary><div>Using personal data and statistical or artificial-intelligence systems to estimate someone's behaviour, characteristics or future risk.</div></details>
+<details><summary>Artificial intelligence (AI)</summary><div>Software that finds patterns in data to make predictions or classifications. Its output depends on the data it learned from, so skewed data can produce skewed results.</div></details>
+<details><summary>Algorithmic bias</summary><div>When a system produces systematically less accurate or unfair outcomes for some groups.</div></details>
+<details><summary>Human oversight</summary><div>A trained person meaningfully checks an automated result instead of simply accepting it.</div></details>
+<div class="tw"><table><tr><th>Possible benefits</th><th>Main risks</th></tr>
+<tr><td><ul><li>Help locate suspects or missing people faster.</li><li>Help prevent serious crime and terrorism.</li><li>Efficiency: analyse more data than humans can.</li></ul></td><td><ul><li>Privacy invasion and excessive data collection.</li><li>False matches or inaccurate risk predictions.</li><li>Discrimination against particular groups.</li><li>Chilling effect on lawful speech or activity.</li><li>Data retained, shared or reused improperly.</li></ul></td></tr></table></div>
+<div class="call"><b>Key argument:</b> a prediction is not proof.</div>
+<h3>Practical safeguards you can propose</h3>
+<ol><li><b>Necessity and proportionality:</b> legitimate purpose, justified intrusion.</li><li><b>Purpose limitation:</b> no quiet reuse for unrelated purposes.</li><li><b>Retention limits:</b> delete data when no longer needed.</li><li><b>Independent testing:</b> before deployment and regularly after.</li><li><b>Human review:</b> before serious decisions affecting rights.</li><li><b>Transparency:</b> what is used, why, what safeguards apply.</li><li><b>Complaints and remedies:</b> a way to challenge errors.</li><li><b>Independent oversight:</b> inspect compliance, investigate misuse.</li></ol>
+<h3>What the Human Rights Council can do</h3>
+<ul><li>It has <span class="g">47 Member States</span>.</li><li>Adopts resolutions setting out guidance and recommendations.</li><li>Can request reports and advice from OHCHR.</li><li>Can request technical assistance for States.</li></ul></section>
+
+<section class="panel" id="fr" data-g="R" data-n="UK Facial Recognition"><h2>UK Facial Recognition</h2>
+<h3>How police use it</h3><p>The Home Office factsheet says police use three types: <b>retrospective</b> (comparing images after an event), <b>live</b> (scanning faces against a watchlist in real time) and <b>operator-initiated</b> (an officer checks an image on request).</p>
+<h3>Safeguards (existing)</h3>
+<ul><li>If there is no match in live use, biometric data is <span class="g">deleted immediately and automatically</span>; the watchlist is destroyed after each operation.</li><li>After a possible match, <b>an officer decides</b> what action, if any, to take. A match is not an automatic arrest.</li><li>Parliamentary answer, <span class="g">13 April 2026</span>: Home Office-funded police systems must be independently tested to operate at settings where bias is negligible.</li></ul>
+<h3>Scale</h3><ul><li>As of <span class="g">November 2025</span>, <span class="g">13 police forces</span> had used or were using live facial recognition (Government statement).</li></ul>
+<h3>Criticisms</h3>
+<ul><li>The legal basis is a patchwork (common law, statutes, codes, guidance) rather than one dedicated law.</li><li>Concerns about accuracy and bias across demographic groups.</li><li>Transparency, watchlist criteria and proportionality of use in public places.</li><li>Court of Appeal in <i>Bridges</i> (2020) found shortcomings in one force's policy.</li></ul>
+<h3>Current developments (<span class="tag pr">Proposed</span>)</h3>
+<ul><li><span class="g">4 December 2025</span>: factsheet published and consultation launched on a clearer legal framework.</li><li>Consultation ran to <span class="g">12 February 2026</span>. <b>It is closed</b>; never call it open.</li><li><span class="g">13 April 2026</span>: Government considering responses; intends to legislate in due course.</li></ul>
+<div class="call">Time-stamped claims: if challenged, quote the date and source, not “always” or “currently” without a date.</div></section>
+
+<section class="panel" id="src" data-g="R" data-n="Sources"><h2>Sources &amp; Statistics</h2>
+<div class="tw"><table><tr><th>Fact</th><th>Date</th><th>Source</th></tr>
+<tr><td>Home Office factsheet on police facial recognition; consultation launched</td><td class="g">4 Dec 2025</td><td>GOV.UK (search link below)</td></tr>
+<tr><td>Consultation closed</td><td class="g">12 Feb 2026</td><td>GOV.UK</td></tr>
+<tr><td>13 police forces using or had used live facial recognition</td><td class="g">Nov 2025</td><td>Home Office factsheet</td></tr>
+<tr><td>Written answer: legislation intended; bias testing</td><td class="g">13 Apr 2026</td><td>UK Parliament</td></tr>
+<tr><td>Human Rights Council membership</td><td class="g">47 States</td><td>OHCHR</td></tr></table></div>
+<h3>Clickable sources</h3>
+<ol><li><a href="https://www.gov.uk/search/all?keywords=police%20use%20of%20facial%20recognition%20factsheet" target="_blank" rel="noopener">GOV.UK: Home Office, Police use of facial recognition factsheet (4 Dec 2025) and guide</a></li>
+<li><a href="https://www.gov.uk/search/all?keywords=facial%20recognition%20legal%20framework%20consultation" target="_blank" rel="noopener">GOV.UK: Consultation on a legal framework for facial recognition (closed 12 Feb 2026)</a></li>
+<li><a href="https://questions-statements.parliament.uk/" target="_blank" rel="noopener">UK Parliament: written questions (search “facial recognition”, answer 13 Apr 2026)</a></li>
+<li><a href="https://www.un.org/en/about-us/universal-declaration-of-human-rights" target="_blank" rel="noopener">United Nations: Universal Declaration of Human Rights</a></li>
+<li><a href="https://www.ohchr.org/en/instruments-mechanisms/instruments/international-covenant-civil-and-political-rights" target="_blank" rel="noopener">OHCHR: International Covenant on Civil and Political Rights</a></li>
+<li><a href="https://www.ohchr.org/en/hrbodies/hrc/home" target="_blank" rel="noopener">OHCHR: Human Rights Council</a></li>
+<li><a href="https://www.legislation.gov.uk/" target="_blank" rel="noopener">legislation.gov.uk: full text of UK Acts</a></li></ol>
+<p class="call">Gov.uk and Parliament links open search or index pages because pages move. Open them while online and save the exact page you plan to quote. Always check the latest source before conference.</p></section>
+
+<!-- ============ MUN ============ -->
+<section class="panel" id="phr" data-g="M" data-n="Phrasebook"><h2>MUN Phrasebook</h2><p>Open a category. Each phrase says when to use it, with examples for this agenda.</p><div id="phbook"></div>
+<h3>Abbreviations &amp; terms</h3>
+<div class="tw"><table><tr><th>Term</th><th>Meaning</th><th>Depends on conference?</th></tr>
+<tr><td><b>POI</b></td><td>Point of Information: a question to the speaker.</td><td>Yes: some allow none, or only on request</td></tr>
+<tr><td><b>POO</b></td><td>Point of Order: you think a rule was broken or misapplied.</td><td>Yes</td></tr>
+<tr><td><b>PPP</b></td><td>Point of Personal Privilege: personal comfort, e.g. you cannot hear.</td><td>Yes</td></tr>
+<tr><td><b>PoPI</b></td><td>Point of Parliamentary Inquiry: a question to the Chair about procedure.</td><td>Yes</td></tr>
+<tr><td><b>RoR</b></td><td>Right of Reply: reply to a personal insult against your country.</td><td>Yes, often strictly limited</td></tr>
+<tr><td><b>MC / UMC</b></td><td>Moderated / unmoderated caucus.</td><td>Names vary</td></tr>
+<tr><td><b>DR / WP</b></td><td>Draft Resolution / Working Paper.</td><td>Yes</td></tr>
+<tr><td><b>GSL</b></td><td>General Speakers' List.</td><td>Yes</td></tr>
+<tr><td><b>OHCHR</b></td><td>Office of the UN High Commissioner for Human Rights.</td><td>No</td></tr></table></div></section>
+
+<section class="panel" id="poi" data-g="M" data-n="Points & POIs"><h2>Points &amp; POIs</h2>
+<div class="warn"><b>Check your conference rules.</b> Which points exist, whether they can interrupt a speaker, and how many POIs are allowed all differ. Nothing here is universal.</div>
+<div class="tw"><table><tr><th>Point</th><th>Use it when</th><th>Example</th></tr>
+<tr><td>POI</td><td>You want to challenge or clarify what a speaker said.</td><td>“Does the delegate agree that a risk score is not proof of guilt?”</td></tr>
+<tr><td>Point of Order</td><td>A rule appears to have been broken.</td><td>“Point of Order: the speaker has exceeded the time allotted.”</td></tr>
+<tr><td>Personal Privilege</td><td>You cannot hear or are uncomfortable.</td><td>“Point of Personal Privilege: could the speaker please use the microphone?”</td></tr>
+<tr><td>Parliamentary Inquiry</td><td>You are unsure of procedure.</td><td>“Point of Parliamentary Inquiry: at what point can amendments be submitted?”</td></tr></table></div>
+<h3>How to ask intelligent POIs</h3>
+<ul><li>Keep it <b>one sentence</b> and a real question, not a speech.</li><li>Target a weakness: vague wording, missing funding, no oversight, mandate overreach.</li><li>Ask something that makes the speaker commit, not a yes/no they can easily dodge.</li><li>Be polite. Never insult the delegate.</li></ul>
+<h3>Example POIs for this agenda</h3>
+<ul><li>“Who would independently verify that these systems are free of bias?”</li><li>“How would your proposal protect people wrongly flagged by a predictive system?”</li><li>“Does the delegate accept that data collected for security should not be reused for unrelated purposes?”</li><li>“How does the delegate propose that the Council, which cannot legislate, enforce this?”</li></ul>
+<h3>Answering POIs</h3><ul><li>Pause. Answer the question you were asked, briefly.</li><li>“Thank you for that question. The United Kingdom believes…”</li><li>Do not know? Say so (see Challenges &amp; Responses).</li></ul></section>
+
+<section class="panel" id="mot" data-g="M" data-n="Motions & Procedure"><h2>Motions &amp; Procedure</h2>
+<div class="warn"><b>Conference-dependent:</b> motion names, voting thresholds, speaking times and order of precedence differ. Ask your chair or read the rules before the session.</div>
+<div class="tw"><table><tr><th>Motion (typical)</th><th>Purpose</th><th>How to say it</th></tr>
+<tr><td>Moderated caucus</td><td>Structured, timed speeches on a sub-topic.</td><td>“The delegate of the United Kingdom moves for a moderated caucus of 10 minutes, speaking time 45 seconds, on safeguards for facial recognition.”</td></tr>
+<tr><td>Unmoderated caucus</td><td>Free movement to negotiate and write.</td><td>“The delegate moves for an unmoderated caucus of 10 minutes.”</td></tr>
+<tr><td>Extend a caucus</td><td>More time.</td><td>“Motion to extend the caucus by 5 minutes.”</td></tr>
+<tr><td>Close debate / move to vote</td><td>End discussion and vote.</td><td>“Motion to close debate and move into voting procedure.”</td></tr>
+<tr><td>Introduce a document</td><td>Present a working paper or draft resolution.</td><td>“Motion to introduce the working paper submitted by…”</td></tr></table></div>
+<h3>Typical flow of a session</h3>
+<ol><li>Roll call and setting the agenda.</li><li>Speakers' list and formal debate.</li><li>Moderated and unmoderated caucuses.</li><li>Working papers become draft resolutions.</li><li>Amendments, then voting.</li></ol>
+<h3>Before committee</h3><ul><li>Read the rules of procedure and ask how points work.</li><li>Prepare a 1-minute opening speech and 3 key points.</li><li>Learn which countries are likely allies or opponents.</li><li>Bring a short clause bank (e.g. “Requests OHCHR to prepare a report on…”).</li></ul>
+<h3>Moderated and unmoderated caucuses</h3><ul><li><b>Moderated:</b> speak early on a narrow topic, make one clear point, link back to previous speakers.</li><li><b>Unmoderated:</b> move quickly. Find 2–3 delegates, offer a concrete clause, collect signatories, share paper.</li></ul></section>
+
+<section class="panel" id="spe" data-g="M" data-n="Speeches"><h2>Speeches</h2>
+<h3>Simple structure (about 60–90 seconds)</h3><ol><li><b>Hook:</b> a striking, true point.</li><li><b>Position:</b> the UK's view.</li><li><b>Evidence:</b> one law or dated fact.</li><li><b>Solution:</b> one or two concrete proposals.</li><li><b>Close:</b> a memorable line.</li></ol>
+<details open><summary>Sample opening speech (UK, HRC)</summary><div>“Honourable Chair, distinguished delegates. A prediction is not proof. The United Kingdom recognises that surveillance technology can help protect the public from serious harm, but it must be lawful, necessary, proportionate and overseen. In December 2025 our Government launched a consultation on a clearer legal framework for facial recognition, because safeguards must keep pace with technology. We urge the Council to request an OHCHR report on best practice and to support technical assistance for States building safeguards. Security and human rights must be protected together. Thank you, Chair.”</div></details>
+<details><summary>Sample reply speech in a moderated caucus</summary><div>“The United Kingdom thanks the delegate of… and shares the concern on bias. We would add that independent testing, before and after deployment, is the most practical safeguard. We invite delegates to support this in the working paper.”</div></details>
+<h3>Delivery tips</h3><ul><li>Slow down; look up, not at your notes.</li><li>One idea per sentence.</li><li>Use dated facts, not exaggerations.</li></ul></section>
+
+<section class="panel" id="neg" data-g="M" data-n="Negotiation"><h2>Negotiation</h2>
+<h3>Approaching delegates</h3><ul><li>“Hello, I'm the delegate of the United Kingdom. Could we talk about safeguards?”</li><li>Ask what <i>their</i> priority is first, then find overlap.</li><li>Bring a one-line proposal, not a lecture.</li></ul>
+<h3>Building alliances</h3>
+<ul><li>Likely overlap: States prioritising privacy, non-discrimination, and technical assistance.</li><li>Offer something: a shared clause, co-sponsorship, credit for their idea.</li><li>Do not assume a bloc's position: ask and listen.</li></ul>
+<h3>Where the UK can compromise</h3><ul><li>Flexible: wording, timelines, reporting requirements, voluntary guidance.</li><li>Firm: no blanket ban on lawful, safeguarded security uses; mandate must respect national security.</li></ul>
+<h3>Example negotiation lines</h3><ul><li>“Could we phrase this as ‘encourages’ rather than ‘demands’? That keeps within the Council's mandate.”</li><li>“If we add independent oversight, would your delegation co-sponsor?”</li></ul></section>
+
+<section class="panel" id="cha" data-g="M" data-n="Challenges & Responses"><h2>Challenges &amp; Responses</h2>
+<details open><summary>“Why not ban surveillance completely?”</summary><div>“The United Kingdom recognises that surveillance can help prevent serious crime and protect public safety. Our position is that it must be lawful, necessary, proportionate and independently overseen.”</div></details>
+<details open><summary>“What if the algorithm identifies someone as dangerous?”</summary><div>“A prediction is not proof. Important decisions must be based on reliable evidence and meaningful human review.”</div></details>
+<details open><summary>“Does the United Kingdom have problems with facial recognition?”</summary><div>“We recognise that the legal framework has been complex and that safeguards must keep pace with technology. That is why the Government consulted on a clearer framework in 2025–2026.”</div></details>
+<details open><summary>“How can countries with fewer resources comply?”</summary><div>“International cooperation, technical assistance, shared testing methods and training can help countries build safeguards without needing to develop everything independently.”</div></details>
+<details><summary>“The UK uses mass surveillance against its own citizens.”</summary><div>“The United Kingdom takes that concern seriously. Our powers are set in law and subject to independent oversight, and we are consulting on clearer rules. We welcome specific suggestions.” <i>(Stay factual; do not deny criticisms exist.)</i></div></details>
+<details><summary>“Your own courts found facial recognition use unlawful.”</summary><div>“The Court of Appeal identified shortcomings in one force's policy in 2020. That is part of why the Government is seeking a clearer framework.”</div></details>
+<h3>Answering unexpected questions</h3><ul><li>Pause, restate the question, answer in one sentence, then bridge back to your key points.</li><li>Separate what you know from what you assume.</li></ul>
+<h3>If you do not know</h3><ul><li>“I do not have that figure in front of me. The delegate may wish to consult the official source, and I will return to this in the caucus.”</li><li>“The United Kingdom's position is…, but I would not want to give an inaccurate number.”</li><li>Never invent a statistic. Honesty protects your credibility.</li></ul></section>
+
+<section class="panel" id="qr" data-g="M" data-n="Quick Reference"><h2>Quick Reference</h2>
+<div class="call"><b>One-line position:</b> surveillance only if lawful, necessary, proportionate, fair and overseen. A prediction is not proof.</div>
+<div class="tw"><table><tr><th>Need</th><th>Say</th></tr>
+<tr><td>Start</td><td>“Honourable Chair, distinguished delegates, the United Kingdom believes…”</td></tr>
+<tr><td>Agree</td><td>“We share the concerns of the delegate of…”</td></tr>
+<tr><td>Disagree</td><td>“While we respect…, we believe…”</td></tr>
+<tr><td>Ask</td><td>“Could the delegate clarify how this would be monitored?”</td></tr>
+<tr><td>Propose</td><td>“This delegation would support measures to…”</td></tr>
+<tr><td>Close</td><td>“Security and human rights must be protected together.”</td></tr></table></div>
+<h3>Key facts</h3><ul><li><span class="g">4 Dec 2025</span> consultation launched; <span class="g">12 Feb 2026</span> closed.</li><li><span class="g">13 forces</span> (Nov 2025).</li><li><span class="g">13 Apr 2026</span> Government intends to legislate in due course.</li><li>Privacy: <span class="g">UDHR Art. 12 / ICCPR Art. 17</span>. Equality: <span class="g">Art. 7 / Art. 26</span>.</li><li>HRC: <span class="g">47 members</span>; recommendations, not binding law.</li></ul>
+<p class="call">Your conference's rules take priority. Verify any fact against the official source before quoting.</p></section>
+</div></main>
+<footer>Student conference reference. Check the latest official sources and your conference rules. Works offline once downloaded.</footer>
+<button id="top" aria-label="Back to top">↑</button>
+<script>
+const G={R:[["pos","UK Position"],["law","UK Laws & Policies"],["hr","Human Rights"],["top1","Topic Explained"],["fr","UK Facial Recognition"],["src","Sources & Statistics"]],
+M:[["phr","MUN Phrasebook"],["poi","Points & POIs"],["mot","Motions & Procedure"],["spe","Speeches"],["neg","Negotiation"],["cha","Challenges & Responses"],["qr","Quick Reference"]]};
+const PB=[
+["Opening a speech","Start by greeting the Chair and committee, then state your country.",[["Honourable Chair, distinguished delegates…","First line of nearly any formal speech.",["Honourable Chair, distinguished delegates, the United Kingdom welcomes this debate.","Thank you, Chair. The delegation of the United Kingdom would like to open by saying…"]],["The United Kingdom believes / recognises…","State your core position.",["The United Kingdom recognises that surveillance can protect the public, but only with strong safeguards.","The United Kingdom believes a prediction is not proof."]]]],
+["Giving an opinion","Share a view without sounding rude.",[["In our view… / We believe…","Clear, confident opinions.",["In our view, independent testing must come before any deployment.","We believe human review is essential for serious decisions."]],["It is the position of this delegation that…","A more formal stance.",["It is the position of this delegation that privacy and security are not opposites."]]]],
+["Agreeing with another delegate","Build allies and show common ground.",[["We share the concerns raised by the delegate of…","Agree and build on a point.",["We share the concerns raised by the delegate of Germany on algorithmic bias.","We fully agree with the delegate of Brazil that data should be deleted when no longer needed."]],["We thank the delegate for raising…","Credit before adding your point.",["We thank the delegate for raising transparency; we would add the need for oversight."]]]],
+["Disagreeing diplomatically","Challenge the idea, never the person.",[["While we respect the position of…, we believe…","Standard polite disagreement.",["While we respect the position of the delegate of…, we believe a total ban would be disproportionate.","With respect to the delegate, we cannot support a clause that ignores national security."]],["We have concerns about…","Soft but clear.",["We have concerns about the funding of this proposal.","We have concerns that this wording exceeds the Council's mandate."]]]],
+["Asking questions","Use for POIs and in caucuses.",[["Could the delegate clarify…?","Polite request for detail.",["Could the delegate clarify how this would be monitored?","Could the delegate explain who would carry out the testing?"]],["How would the delegate ensure…?","Pushes them to commit.",["How would the delegate ensure that people wrongly flagged can seek a remedy?"]]]],
+["Answering POIs","Short, calm, direct.",[["Thank you for that question.","Buy a moment to think.",["Thank you for that question. Our view is that…"]],["The delegate raises a fair point.","Concede lightly, then restate.",["The delegate raises a fair point, and that is why we propose independent oversight."]]]],
+["Asking for clarification","When you did not understand or hear.",[["Could the delegate repeat…?","Missed something.",["Could the delegate repeat the proposed reporting deadline?"]],["Do I understand correctly that…?","Check meaning before reacting.",["Do I understand correctly that the delegate supports a full ban?"]]]],
+["Raising a Point of Order","Only if your rules allow; say it briefly.",[["Point of Order.","A rule was broken.",["Point of Order: the speaker has exceeded their time.","Point of Order: this amendment was not submitted within the deadline."]]]],
+["Point of Personal Privilege","Comfort or hearing problems only.",[["Point of Personal Privilege.","You cannot hear or follow.",["Point of Personal Privilege: could the speaker please speak louder?","Point of Personal Privilege: may I be excused for a moment?"]]]],
+["Right of Reply","Only for a personal insult to your country, if allowed.",[["The United Kingdom requests a Right of Reply.","A remark attacked your country's integrity.",["The United Kingdom requests a Right of Reply to the remarks of the delegate of…"]]]],
+["Making motions","Wait to be recognised by the Chair.",[["The delegate moves for…","Standard opening to a motion.",["The delegate of the United Kingdom moves for a 10-minute unmoderated caucus.","Motion for a moderated caucus on safeguards, 10 minutes, 45 seconds per speaker."]],["Motion to close debate.","When positions are clear.",["Motion to close debate and move into voting procedure."]]]],
+["Proposing solutions","Make it concrete and within mandate.",[["This delegation would support measures to…","Soft, flexible proposals.",["This delegation would support measures to require independent bias testing.","This delegation would support requests for OHCHR technical assistance."]],["We propose that the Council request…","Mandate-friendly wording.",["We propose that the Council request OHCHR to prepare a report on safeguards for biometric technologies."]]]],
+["Negotiating with other countries","Short, friendly, practical.",[["Would your delegation be open to…?","Invite compromise.",["Would your delegation be open to ‘encourages’ instead of ‘requires’?"]],["Could we work together on…?","Start an alliance.",["Could we work together on a clause about human review?","If we add oversight, would you co-sponsor?"]]]],
+["Responding to criticism","Acknowledge, do not get defensive.",[["We recognise that further improvements are necessary.","Admit real gaps.",["We recognise that further improvements are necessary, which is why we consulted on a clearer framework."]],["We take that concern seriously.","Neutral and calm.",["We take that concern seriously and welcome specific suggestions."]]]],
+["Closing a speech","End strong and hand back.",[["Security and human rights must be protected together.","Memorable summary line.",["In closing, security and human rights must be protected together."]],["Thank you, Chair. I yield the floor.","Formal ending (yield rules vary).",["Thank you, Chair. The United Kingdom yields the remainder of its time to the Chair."]]]]];
+const pb=document.getElementById("phbook");
+PB.forEach((c,i)=>{pb.insertAdjacentHTML("beforeend",`<details${i==0?" open":""}><summary>${c[0]}</summary><div><p class="w">${c[1]}</p>`+c[2].map(p=>`<div class="ph"><b>“${p[0]}”</b><div class="w">Use: ${p[1]}</div><ul>${p[2].map(e=>`<li>${e}</li>`).join("")}</ul></div>`).join("")+`</div></details>`)});
+let cg="R";const subs=document.getElementById("subs");
+function showPanel(id){document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("on",p.id===id));
+ subs.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.id===id));scrollTo(0,0)}
+function showGroup(g,id){cg=g;document.querySelectorAll(".main button").forEach(b=>b.setAttribute("aria-selected",b.dataset.g===g));
+ subs.innerHTML=G[g].map(s=>`<button role="tab" data-id="${s[0]}">${s[1]}</button>`).join("");
+ subs.querySelectorAll("button").forEach(b=>b.onclick=()=>showPanel(b.dataset.id));showPanel(id||G[g][0][0])}
+document.querySelectorAll(".main button").forEach(b=>b.onclick=()=>showGroup(b.dataset.g));
+const q=document.getElementById("q"),res=document.getElementById("res");
+q.oninput=()=>{const t=q.value.trim().toLowerCase();if(t.length<2){res.className="";res.innerHTML="";return}
+ let out=[];document.querySelectorAll(".panel").forEach(p=>p.querySelectorAll("li,tr,.ph,p,summary").forEach(e=>{
+ if(e.closest("#res"))return;if(e.tagName==="LI"&&e.closest(".ph"))return;if(e.tagName==="P"&&e.closest("tr,li,.ph"))return;
+ const x=e.textContent.replace(/\s+/g," ").trim();const i=x.toLowerCase().indexOf(t);
+ if(i>-1&&out.length<30)out.push([p.id,p.dataset.n,x.slice(Math.max(0,i-40),i+110),i>40]);}));
+ res.className="on";res.innerHTML=`<b>${out.length?out.length+" result(s)":"No results"}</b>`+out.map(o=>`<button class="r" data-p="${o[0]}"><small>${o[1]}</small><br>${o[3]?"…":""}${o[2].replace(/[<>&]/g,"").replace(new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"gi"),m=>"<mark>"+m+"</mark>")}</button>`).join("");
+ res.querySelectorAll(".r").forEach(b=>b.onclick=()=>{const p=document.getElementById(b.dataset.p);showGroup(p.dataset.g,p.id);p.querySelectorAll("details").forEach(d=>d.open=true)})};
+document.getElementById("pr").onclick=()=>print();
+let open=false;document.getElementById("ex").onclick=()=>{open=!open;document.querySelector(".panel.on").querySelectorAll("details").forEach(d=>d.open=open)};
+const tb=document.getElementById("top");addEventListener("scroll",()=>tb.style.display=scrollY>400?"block":"none");tb.onclick=()=>scrollTo(0,0);
+showGroup("R");
+</script></body></html>
